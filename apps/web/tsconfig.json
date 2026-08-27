@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "paths": {
+      "@ember/ui": ["../../packages/ui/src/index.ts"],
+      "@ember/api": ["../../packages/api/src/index.ts"],
+      "@ember/api/types": ["../../packages/api/src/types.ts"]
+    }
+  },
+  "include": ["src", "vite.config.ts"]
+}

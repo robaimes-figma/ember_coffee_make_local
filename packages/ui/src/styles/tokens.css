@@ -1,0 +1,224 @@
+/* ===========================================================================
+   Ember design tokens
+   ===========================================================================
+
+   This file is the single source of truth for every colour, space, radius,
+   shadow and type size in the product. Nothing else in the codebase should
+   contain a raw hex value or a magic pixel number.
+
+   It has two layers, and which one you edit matters:
+
+   LAYER 1 — PALETTE (--palette-*)
+     The raw brand ramps. Changing these re-tints the entire brand. You very
+     rarely want this. If a stakeholder says "our orange is too red", this is
+     the place.
+
+   LAYER 2 — SEMANTIC (--sem-*)
+     Roles, not colours: "the page background", "muted body text", "the
+     danger colour". Every component references these, never the palette.
+     This is the layer you almost always want. Because light and dark mode
+     are two different sets of --sem-* values pointing at the same palette,
+     editing a role here fixes both surfaces at once.
+
+   The scales below (space, radius, shadow, type) follow the same rule:
+   components pick a step from the scale, never an arbitrary value.
+
+   Tailwind utilities are generated from these tokens in ./theme.css.
+   =========================================================================== */
+
+:root {
+  /* -------------------------------------------------------------------------
+     LAYER 1 — PALETTE
+     ---------------------------------------------------------------------- */
+
+  /* Cream — warm neutral, carries the light surfaces */
+  --palette-cream-50: #fdfaf6;
+  --palette-cream-100: #f8f1e7;
+  --palette-cream-200: #efe3d2;
+  --palette-cream-300: #e2d0b8;
+  --palette-cream-400: #cbb495;
+
+  /* Espresso — warm neutral, carries text and the dark surfaces */
+  --palette-espresso-300: #a9948a;
+  --palette-espresso-400: #8a7466;
+  --palette-espresso-500: #6b564a;
+  --palette-espresso-600: #4e3b31;
+  --palette-espresso-700: #38281f;
+  --palette-espresso-800: #261a14;
+  --palette-espresso-900: #17100c;
+
+  /* Ember — the brand primary. Burnt orange, the colour of a roast drum. */
+  --palette-ember-50: #fef3ec;
+  --palette-ember-100: #fbe0ce;
+  --palette-ember-200: #f6c09d;
+  --palette-ember-300: #ee9a6b;
+  --palette-ember-400: #e27442;
+  --palette-ember-500: #c85a2a;
+  --palette-ember-600: #a44520;
+  --palette-ember-700: #7e341a;
+
+  /* Moss — secondary, used for success and for the subscription surfaces */
+  --palette-moss-50: #eef5ee;
+  --palette-moss-100: #d5e7d7;
+  --palette-moss-300: #8fbf97;
+  --palette-moss-500: #4a8055;
+  --palette-moss-600: #3a6644;
+  --palette-moss-700: #2c4e34;
+
+  /* Amber — warning */
+  --palette-amber-50: #fef6e7;
+  --palette-amber-100: #fce7bc;
+  --palette-amber-300: #f3c468;
+  --palette-amber-500: #d99b21;
+  --palette-amber-600: #b07a14;
+
+  /* Crimson — danger. Deliberately cooler than Ember so a destructive
+     action never reads as a brand action. */
+  --palette-crimson-50: #fdeeee;
+  --palette-crimson-100: #f9d4d4;
+  --palette-crimson-300: #ec9494;
+  --palette-crimson-500: #c93b3b;
+  --palette-crimson-600: #a62b2b;
+  --palette-crimson-700: #7f2020;
+
+  /* Harbor — informational. Only used in the admin console. */
+  --palette-harbor-50: #edf3fb;
+  --palette-harbor-100: #d2e2f5;
+  --palette-harbor-300: #8fb6e3;
+  --palette-harbor-500: #3a6fb0;
+  --palette-harbor-600: #2c5789;
+
+  /* -------------------------------------------------------------------------
+     LAYER 2 — SEMANTIC (light mode)
+     ---------------------------------------------------------------------- */
+
+  /* Surfaces, back to front */
+  --sem-canvas: var(--palette-cream-50);
+  --sem-surface: #ffffff;
+  --sem-surface-sunken: var(--palette-cream-100);
+  --sem-surface-hover: var(--palette-cream-100);
+  --sem-surface-inverse: var(--palette-espresso-800);
+
+  /* Borders */
+  --sem-border: var(--palette-cream-300);
+  --sem-border-strong: var(--palette-cream-400);
+  --sem-border-inverse: var(--palette-espresso-600);
+
+  /* Text */
+  --sem-text: var(--palette-espresso-800);
+  --sem-text-muted: var(--palette-espresso-500);
+  --sem-text-subtle: var(--palette-espresso-400);
+  --sem-text-inverse: var(--palette-cream-50);
+
+  /* Brand accent */
+  --sem-accent: var(--palette-ember-500);
+  --sem-accent-hover: var(--palette-ember-600);
+  --sem-accent-soft: var(--palette-ember-50);
+  --sem-accent-soft-hover: var(--palette-ember-100);
+  --sem-accent-text: var(--palette-ember-700);
+  --sem-on-accent: #ffffff;
+
+  /* Status */
+  --sem-success: var(--palette-moss-500);
+  --sem-success-soft: var(--palette-moss-50);
+  --sem-success-text: var(--palette-moss-700);
+
+  --sem-warning: var(--palette-amber-500);
+  --sem-warning-soft: var(--palette-amber-50);
+  --sem-warning-text: var(--palette-amber-600);
+
+  --sem-danger: var(--palette-crimson-500);
+  --sem-danger-hover: var(--palette-crimson-600);
+  --sem-danger-soft: var(--palette-crimson-50);
+  --sem-danger-text: var(--palette-crimson-700);
+  --sem-on-danger: #ffffff;
+
+  --sem-info: var(--palette-harbor-500);
+  --sem-info-soft: var(--palette-harbor-50);
+  --sem-info-text: var(--palette-harbor-600);
+
+  /* Roast levels — used by product cards, filters and the roast dial.
+     These are semantic in the domain sense: "light roast" is a role. */
+  --sem-roast-light: var(--palette-amber-300);
+  --sem-roast-medium: var(--palette-ember-400);
+  --sem-roast-medium-dark: var(--palette-ember-600);
+  --sem-roast-dark: var(--palette-espresso-700);
+
+  /* Focus ring — one token, used by every interactive component */
+  --sem-focus-ring: var(--palette-ember-500);
+
+  /* -------------------------------------------------------------------------
+     ELEVATION
+
+     Warm-tinted rather than neutral grey, so shadows sit in the same colour
+     family as the cream surfaces. Semantic because dark mode needs a
+     different, harder shadow to read at all.
+     ---------------------------------------------------------------------- */
+  --sem-shadow-xs: 0 1px 2px 0 rgb(38 26 20 / 0.06);
+  --sem-shadow-sm: 0 1px 3px 0 rgb(38 26 20 / 0.08), 0 1px 2px -1px rgb(38 26 20 / 0.06);
+  --sem-shadow-md: 0 4px 12px -2px rgb(38 26 20 / 0.1), 0 2px 4px -2px rgb(38 26 20 / 0.06);
+  --sem-shadow-lg: 0 12px 28px -6px rgb(38 26 20 / 0.14), 0 4px 8px -4px rgb(38 26 20 / 0.08);
+  --sem-shadow-xl: 0 24px 48px -12px rgb(38 26 20 / 0.2);
+}
+
+/* ---------------------------------------------------------------------------
+   LAYER 2 — SEMANTIC (dark mode)
+
+   Only the roles change. The palette above is shared, which is why a dark
+   mode fix here can never drift away from the light palette.
+   ------------------------------------------------------------------------ */
+
+.dark {
+  --sem-canvas: var(--palette-espresso-900);
+  --sem-surface: var(--palette-espresso-800);
+  --sem-surface-sunken: var(--palette-espresso-900);
+  --sem-surface-hover: var(--palette-espresso-700);
+  --sem-surface-inverse: var(--palette-cream-100);
+
+  --sem-border: var(--palette-espresso-600);
+  --sem-border-strong: var(--palette-espresso-500);
+  --sem-border-inverse: var(--palette-cream-300);
+
+  --sem-text: var(--palette-cream-100);
+  --sem-text-muted: var(--palette-espresso-400);
+  --sem-text-subtle: var(--palette-espresso-500);
+  --sem-text-inverse: var(--palette-espresso-900);
+
+  --sem-accent: var(--palette-ember-400);
+  --sem-accent-hover: var(--palette-ember-300);
+  --sem-accent-soft: var(--palette-espresso-700);
+  --sem-accent-soft-hover: var(--palette-espresso-600);
+  --sem-accent-text: var(--palette-ember-200);
+  --sem-on-accent: var(--palette-espresso-900);
+
+  --sem-success: var(--palette-moss-300);
+  --sem-success-soft: color-mix(in oklab, var(--palette-moss-700) 40%, transparent);
+  --sem-success-text: var(--palette-moss-100);
+
+  --sem-warning: var(--palette-amber-300);
+  --sem-warning-soft: color-mix(in oklab, var(--palette-amber-600) 30%, transparent);
+  --sem-warning-text: var(--palette-amber-100);
+
+  --sem-danger: var(--palette-crimson-300);
+  --sem-danger-hover: var(--palette-crimson-100);
+  --sem-danger-soft: color-mix(in oklab, var(--palette-crimson-700) 40%, transparent);
+  --sem-danger-text: var(--palette-crimson-100);
+  --sem-on-danger: var(--palette-espresso-900);
+
+  --sem-info: var(--palette-harbor-300);
+  --sem-info-soft: color-mix(in oklab, var(--palette-harbor-600) 30%, transparent);
+  --sem-info-text: var(--palette-harbor-100);
+
+  --sem-roast-light: var(--palette-amber-300);
+  --sem-roast-medium: var(--palette-ember-300);
+  --sem-roast-medium-dark: var(--palette-ember-500);
+  --sem-roast-dark: var(--palette-espresso-500);
+
+  --sem-focus-ring: var(--palette-ember-300);
+
+  --sem-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --sem-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --sem-shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.45), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --sem-shadow-lg: 0 12px 28px -6px rgb(0 0 0 / 0.5), 0 4px 8px -4px rgb(0 0 0 / 0.35);
+  --sem-shadow-xl: 0 24px 48px -12px rgb(0 0 0 / 0.6);
+}

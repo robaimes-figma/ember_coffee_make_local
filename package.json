@@ -1,0 +1,30 @@
+{
+  "name": "ember-coffee",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ember Coffee Roasters — storefront + admin console demo codebase",
+  "scripts": {
+    "dev": "pnpm --filter @ember/web dev",
+    "build": "pnpm --filter @ember/web build",
+    "preview": "pnpm --filter @ember/web preview",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "seed": "pnpm --filter @ember/api seed"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.47.0"
+  },
+  "packageManager": "pnpm@11.5.2",
+  "engines": {
+    "node": ">=20.19"
+  }
+}

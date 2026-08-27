@@ -1,0 +1,17 @@
+/* ===========================================================================
+   Ember web — stylesheet entry point
+   ===========================================================================
+   Order matters here. Tailwind first, then the design system's tokens, then
+   the theme that maps those tokens onto utilities, then the base layer.
+   =========================================================================== */
+
+@import 'tailwindcss';
+
+/* Tailwind scans this app automatically, but the design system lives outside
+   this package's directory, so its classes have to be pointed at explicitly.
+   Without this line, every component in @ember/ui renders unstyled. */
+@source '../../../packages/ui/src';
+
+@import '@ember/ui/tokens.css';
+@import '@ember/ui/theme.css';
+@import '@ember/ui/base.css';

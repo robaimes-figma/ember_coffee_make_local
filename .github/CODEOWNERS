@@ -1,0 +1,14 @@
+# Design system and token changes affect both surfaces at once, so they go to
+# the design systems owners regardless of who opened the pull request.
+/packages/ui/src/styles/    @ember/design-systems
+/packages/ui/               @ember/design-systems @ember/web
+
+# Data shapes and pricing rules are engineering's call.
+/packages/api/              @ember/web
+/apps/web/src/lib/          @ember/web
+
+# Everything else in the app is fair game for anyone on the product team.
+/apps/web/                   @ember/web @ember/design
+
+# Infrastructure
+/.github/                   @ember/web

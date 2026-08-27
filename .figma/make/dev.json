@@ -8,7 +8,7 @@
       ],
       "deprioritize": [
         "packages/ui/src/components/**/*.{tsx,ts}",
-        "packages/ui/src/lib/**/*.{ts}",
+        "packages/ui/src/lib/**/*.ts",
         "apps/web/src/lib/**/*.{ts,tsx}",
         "apps/web/src/router.tsx",
         "apps/web/src/main.tsx"
@@ -21,7 +21,6 @@
         "**/*.figma.{ts,tsx,js,jsx}",
         "**/*.figma.template.*",
         "apps/web/vite.config.ts",
-        "apps/web/tsconfig.json",
         "**/tsconfig*.json",
         "eslint.config.js",
         ".prettierrc.json",
@@ -43,59 +42,55 @@
     "exclusions": [
       {
         "glob": "packages/api/**",
-        "reason": "Express API server — no UI rendering; not a source anchor for any visual edit."
+        "reason": "Express HTTP API server — contains no UI rendering; not a valid source anchor for any visual point-and-edit change."
       },
       {
         "glob": "apps/web/src/styles.css",
-        "reason": "Global CSS entry point — not a component source anchor."
+        "reason": "Global CSS entry point imported by main.tsx — not a component source anchor."
       },
       {
         "glob": "packages/ui/src/styles/**",
-        "reason": "Design token and base CSS files — not component source anchors."
+        "reason": "Design token and base CSS files (tokens.css, theme.css, base.css) — stylesheet assets, not component source anchors."
       },
       {
         "glob": "apps/web/public/**",
-        "reason": "Static assets — not source code."
+        "reason": "Static public assets — not source code and not UI source anchors."
       },
       {
         "glob": "**/*.figma.{ts,tsx,js,jsx}",
-        "reason": "Figma mapping files must never be selected as point-and-edit source anchors."
+        "reason": "Figma mapping files must never be selected as point-and-edit source anchors per classification rules."
       },
       {
         "glob": "**/*.figma.template.*",
-        "reason": "Figma template mapping files must never be selected as point-and-edit source anchors."
+        "reason": "Figma template mapping files must never be selected as point-and-edit source anchors per classification rules."
       },
       {
         "glob": "apps/web/vite.config.ts",
-        "reason": "Build tooling configuration — not a UI source anchor."
-      },
-      {
-        "glob": "apps/web/tsconfig.json",
-        "reason": "TypeScript compiler configuration — not a UI source anchor."
+        "reason": "Vite build tooling configuration — not a UI source anchor."
       },
       {
         "glob": "**/tsconfig*.json",
-        "reason": "TypeScript configuration files — not UI source anchors."
+        "reason": "TypeScript compiler configuration files — not UI source anchors."
       },
       {
         "glob": "eslint.config.js",
-        "reason": "Linter configuration — not a UI source anchor."
+        "reason": "ESLint linter configuration — not a UI source anchor."
       },
       {
         "glob": ".prettierrc.json",
-        "reason": "Formatter configuration — not a UI source anchor."
+        "reason": "Prettier formatter configuration — not a UI source anchor."
       },
       {
         "glob": ".github/**",
-        "reason": "CI/CD and repository workflow files — not UI source anchors."
+        "reason": "CI/CD and GitHub Actions workflow files — not UI source anchors."
       },
       {
         "glob": "docs/**",
-        "reason": "Documentation markdown files — not UI source anchors."
+        "reason": "Documentation files — not UI source anchors."
       },
       {
         "glob": "**/node_modules/**",
-        "reason": "Published external dependencies — not editable project source."
+        "reason": "Published external dependencies — not editable project source and not UI source anchors."
       }
     ],
     "generated": {
@@ -105,7 +100,7 @@
       "model": "claude-sonnet-4-6",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "confidence": 0.97,
-      "explanation": "The monorepo has a clearly active app at apps/web/ with pages, components, and layouts as the primary UI surfaces, and a well-defined local design-system library at packages/ui/ with a stable barrel export and explicit multi-consumer documentation, making classification straightforward with high confidence."
+      "explanation": "The monorepo has a clearly active app at apps/web/ with well-separated pages, components, and layouts as the primary UI surfaces, and a well-defined local design-system library at packages/ui/ with a stable barrel export and explicit multi-consumer design-system description, making classification unambiguous and high-confidence."
     }
   }
 }

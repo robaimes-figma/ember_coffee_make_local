@@ -1,0 +1,111 @@
+{
+  "pointAndEdit": {
+    "priorityPaths": {
+      "prefer": [
+        "apps/web/src/pages/**/*.{tsx,ts}",
+        "apps/web/src/components/**/*.{tsx,ts}",
+        "apps/web/src/layouts/**/*.{tsx,ts}"
+      ],
+      "deprioritize": [
+        "packages/ui/src/components/**/*.{tsx,ts}",
+        "packages/ui/src/lib/**/*.{ts}",
+        "apps/web/src/lib/**/*.{ts,tsx}",
+        "apps/web/src/router.tsx",
+        "apps/web/src/main.tsx"
+      ],
+      "exclude": [
+        "packages/api/**",
+        "apps/web/src/styles.css",
+        "packages/ui/src/styles/**",
+        "apps/web/public/**",
+        "**/*.figma.{ts,tsx,js,jsx}",
+        "**/*.figma.template.*",
+        "apps/web/vite.config.ts",
+        "apps/web/tsconfig.json",
+        "**/tsconfig*.json",
+        "eslint.config.js",
+        ".prettierrc.json",
+        ".github/**",
+        "docs/**",
+        "**/node_modules/**"
+      ]
+    },
+    "libraryPaths": {
+      "local": [
+        "packages/ui/src/components/**/*.{tsx,ts}",
+        "packages/ui/src/index.ts"
+      ],
+      "external": []
+    },
+    "pathClassification": {
+      "classifier": "sonnet"
+    },
+    "exclusions": [
+      {
+        "glob": "packages/api/**",
+        "reason": "Express API server — no UI rendering; not a source anchor for any visual edit."
+      },
+      {
+        "glob": "apps/web/src/styles.css",
+        "reason": "Global CSS entry point — not a component source anchor."
+      },
+      {
+        "glob": "packages/ui/src/styles/**",
+        "reason": "Design token and base CSS files — not component source anchors."
+      },
+      {
+        "glob": "apps/web/public/**",
+        "reason": "Static assets — not source code."
+      },
+      {
+        "glob": "**/*.figma.{ts,tsx,js,jsx}",
+        "reason": "Figma mapping files must never be selected as point-and-edit source anchors."
+      },
+      {
+        "glob": "**/*.figma.template.*",
+        "reason": "Figma template mapping files must never be selected as point-and-edit source anchors."
+      },
+      {
+        "glob": "apps/web/vite.config.ts",
+        "reason": "Build tooling configuration — not a UI source anchor."
+      },
+      {
+        "glob": "apps/web/tsconfig.json",
+        "reason": "TypeScript compiler configuration — not a UI source anchor."
+      },
+      {
+        "glob": "**/tsconfig*.json",
+        "reason": "TypeScript configuration files — not UI source anchors."
+      },
+      {
+        "glob": "eslint.config.js",
+        "reason": "Linter configuration — not a UI source anchor."
+      },
+      {
+        "glob": ".prettierrc.json",
+        "reason": "Formatter configuration — not a UI source anchor."
+      },
+      {
+        "glob": ".github/**",
+        "reason": "CI/CD and repository workflow files — not UI source anchors."
+      },
+      {
+        "glob": "docs/**",
+        "reason": "Documentation markdown files — not UI source anchors."
+      },
+      {
+        "glob": "**/node_modules/**",
+        "reason": "Published external dependencies — not editable project source."
+      }
+    ],
+    "generated": {
+      "schemaVersion": 2,
+      "source": "setup-agent.point-and-edit-path-classifier",
+      "prompt": "same-turn-setup-subagent-v5",
+      "model": "claude-sonnet-4-6",
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "confidence": 0.97,
+      "explanation": "The monorepo has a clearly active app at apps/web/ with pages, components, and layouts as the primary UI surfaces, and a well-defined local design-system library at packages/ui/ with a stable barrel export and explicit multi-consumer documentation, making classification straightforward with high confidence."
+    }
+  }
+}

@@ -26,6 +26,8 @@ export function HomePage() {
 
   return (
     <>
+      <FallPromoBanner />
+
       <Hero spotlight={spotlight} />
 
       <Container className="py-16 sm:py-24">
@@ -94,6 +96,50 @@ export function HomePage() {
         </div>
       </Container>
     </>
+  )
+}
+
+function FallPromoBanner() {
+  return (
+    <section className="relative overflow-hidden border-b border-border bg-accent-soft">
+      {/* Warm autumn wash, pulled from tokens so it tracks light/dark mode */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-80"
+        style={{
+          background:
+            'radial-gradient(ellipse 55% 130% at 92% 0%, var(--sem-warning-soft), transparent 70%)',
+        }}
+        aria-hidden
+      />
+
+      <Container className="relative flex flex-col items-start gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent text-on-accent">
+            <Leaf className="size-5" aria-hidden />
+          </span>
+          <div className="flex flex-col gap-0.5">
+            <p className="flex flex-wrap items-center gap-2 font-display text-base font-semibold text-accent-text">
+              Fall harvest sale
+              <Badge tone="accent" size="sm">
+                20% off
+              </Badge>
+            </p>
+            <p className="text-sm text-muted text-pretty">
+              Cozy up with this season's small-lot roasts. Take 20% off every bag through November
+              with code <span className="font-semibold text-content">FALL20</span>.
+            </p>
+          </div>
+        </div>
+
+        <ButtonLink
+          to="/shop"
+          trailingIcon={<ArrowRight className="size-4" />}
+          className="shrink-0"
+        >
+          Shop the sale
+        </ButtonLink>
+      </Container>
+    </section>
   )
 }
 

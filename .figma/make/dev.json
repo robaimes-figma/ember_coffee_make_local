@@ -8,7 +8,7 @@
       ],
       "deprioritize": [
         "packages/ui/src/components/**/*.{tsx,ts}",
-        "packages/ui/src/lib/**/*.{ts}",
+        "packages/ui/src/lib/**/*.ts",
         "apps/web/src/lib/**/*.{ts,tsx}",
         "apps/web/src/router.tsx",
         "apps/web/src/main.tsx"
@@ -21,7 +21,6 @@
         "**/*.figma.{ts,tsx,js,jsx}",
         "**/*.figma.template.*",
         "apps/web/vite.config.ts",
-        "apps/web/tsconfig.json",
         "**/tsconfig*.json",
         "eslint.config.js",
         ".prettierrc.json",
@@ -43,7 +42,7 @@
     "exclusions": [
       {
         "glob": "packages/api/**",
-        "reason": "Express API server — no UI rendering; not a source anchor for any visual edit."
+        "reason": "Express HTTP API server with no UI rendering; not a source anchor for any visual edit."
       },
       {
         "glob": "apps/web/src/styles.css",
@@ -59,23 +58,19 @@
       },
       {
         "glob": "**/*.figma.{ts,tsx,js,jsx}",
-        "reason": "Figma mapping files must never be selected as point-and-edit source anchors."
+        "reason": "Figma mapping files must never be selected as point-and-edit source anchors per classification rules."
       },
       {
         "glob": "**/*.figma.template.*",
-        "reason": "Figma template mapping files must never be selected as point-and-edit source anchors."
+        "reason": "Figma template mapping files must never be selected as point-and-edit source anchors per classification rules."
       },
       {
         "glob": "apps/web/vite.config.ts",
         "reason": "Build tooling configuration — not a UI source anchor."
       },
       {
-        "glob": "apps/web/tsconfig.json",
-        "reason": "TypeScript compiler configuration — not a UI source anchor."
-      },
-      {
         "glob": "**/tsconfig*.json",
-        "reason": "TypeScript configuration files — not UI source anchors."
+        "reason": "TypeScript compiler configuration files — not UI source anchors."
       },
       {
         "glob": "eslint.config.js",
@@ -91,7 +86,7 @@
       },
       {
         "glob": "docs/**",
-        "reason": "Documentation markdown files — not UI source anchors."
+        "reason": "Documentation files — not UI source anchors."
       },
       {
         "glob": "**/node_modules/**",
@@ -105,7 +100,7 @@
       "model": "claude-sonnet-4-6",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "confidence": 0.97,
-      "explanation": "The monorepo has a clearly active app at apps/web/ with pages, components, and layouts as the primary UI surfaces, and a well-defined local design-system library at packages/ui/ with a stable barrel export and explicit multi-consumer documentation, making classification straightforward with high confidence."
+      "explanation": "The monorepo has a clearly active app at apps/web/ with pages, components, and layouts as the primary UI surfaces, and a well-defined local design-system library at packages/ui/ with a stable barrel export and multi-consumer package boundary, making classification straightforward with high confidence."
     }
   }
 }

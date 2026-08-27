@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Installs project dependencies. Runs on every project open.
+set -euo pipefail
+
+cd "$(dirname "$0")/../.."
+
+# Frozen lockfile keeps installs reproducible against the committed pnpm-lock.yaml.
+pnpm install --frozen-lockfile

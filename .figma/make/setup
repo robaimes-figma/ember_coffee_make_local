@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Runs once on first open. System-level prerequisites only; cached afterwards.
+set -euo pipefail
+
+# Ensure the pinned pnpm from package.json's "packageManager" field is active.
+# corepack ships with Node, so this needs no network on repeat runs.
+if command -v corepack >/dev/null 2>&1; then
+  corepack enable >/dev/null 2>&1 || true
+  corepack prepare --activate >/dev/null 2>&1 || true
+fi
+
+echo "setup: node $(node -v), pnpm $(pnpm -v)"

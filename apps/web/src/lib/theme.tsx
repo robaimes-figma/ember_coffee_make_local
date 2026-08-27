@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useState, type React
  * Light / dark mode.
  *
  * Adds or removes `.dark` on <html>, which is the hook the design system's
- * dark tokens hang off. Stored so a reload keeps the choice.
+ * dark tokens hang off. Light is the default; see `initialMode` below.
  */
 
 type Mode = 'light' | 'dark'
@@ -18,10 +18,18 @@ const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 const STORAGE_KEY = 'ember.theme.v1'
 
+/**
+ * Light is the default.
+ *
+ * Deliberately does *not* fall back to `prefers-color-scheme`. The cream
+ * surfaces are the brand, and someone opening the storefront for the first
+ * time on a machine set to dark should still see it the way it is designed.
+ * Dark mode is opt-in via the toggle, and an explicit choice is remembered.
+ */
 function initialMode(): Mode {
   const stored = localStorage.getItem(STORAGE_KEY)
   if (stored === 'light' || stored === 'dark') return stored
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return 'light'
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
